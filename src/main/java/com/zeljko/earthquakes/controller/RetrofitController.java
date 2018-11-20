@@ -1,5 +1,6 @@
 package com.zeljko.earthquakes.controller;
 
+import com.zeljko.earthquakes.entity.Data;
 import com.zeljko.earthquakes.entity.Data2;
 import com.zeljko.earthquakes.entity.DataArray;
 import com.zeljko.earthquakes.entity.Quake;
@@ -19,17 +20,15 @@ import java.util.logging.Logger;
 
 @Controller
 public class RetrofitController {
-    private ArrayList<Data2> data1;
-    private double mag;
-    private String place;
-    private long time;
-    private String url;
 
+    private ArrayList<Data2> data2;
+    private Data data;
     private QuakeService quakeService;
     private RetrofitService retrofitService;
 
     @Autowired
-    public RetrofitController(QuakeService quakeService, RetrofitService retrofitService) {
+    public RetrofitController(Data data, QuakeService quakeService, RetrofitService retrofitService) {
+        this.data = data;
         this.quakeService = quakeService;
         this.retrofitService = retrofitService;
     }
@@ -45,18 +44,20 @@ public class RetrofitController {
             @Override
             public void onResponse(Call<DataArray> call, Response<DataArray> response) {
 
-                DataArray dataArray2 = response.body();
-                data1 = dataArray2.features;
+                /*DataArray dataArray2 = response.body();
+                data2 = dataArray2.features;*/
 
-                for (int i = 0; i < data1.size(); i++) {
+                data2 = response.body().features;
 
-                    place = data1.get(i).getProperties().getPlace();
-                    url = data1.get(i).getProperties().getUrl();
-                    mag = data1.get(i).getProperties().getMag();
-                    time = data1.get(i).getProperties().getTime();
+                for (int i = 0; i < data2.size(); i++) {
+
+                    data.setPlace(data2.get(i).getProperties().getPlace());
+                    data.setUrl(data2.get(i).getProperties().getUrl());
+                    data.setMag(data2.get(i).getProperties().getMag());
+                    data.setTime(data2.get(i).getProperties().getTime());
 
                     // Create a new Date object from the time in milliseconds of the earthquake
-                    Date dateObject = new Date(time);
+                    Date dateObject = new Date(data.getTime());
 
                     // Format the date string (i.e. "Mar 3, 1984")
                     String formattedDate = Util.formatDate(dateObject);
@@ -65,7 +66,7 @@ public class RetrofitController {
                     String formattedTime = Util.formatTime(dateObject);
 
                     Quake quake = new Quake(
-                            mag, formattedDate, formattedTime, place, url);
+                            data.getMag(), formattedDate, formattedTime, data.getPlace(), data.getUrl());
 
                     quakeService.save(quake);
                 }

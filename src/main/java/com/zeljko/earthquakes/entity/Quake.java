@@ -13,7 +13,7 @@ public class Quake {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long quakeID;
-    private double  mag;
+    private double mag;
     private String date;
     private String time;
     private String place;

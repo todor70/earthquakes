@@ -1,5 +1,8 @@
 package com.zeljko.earthquakes.entity;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Data {
 
     private double  mag;
@@ -7,11 +10,7 @@ public class Data {
     private long time;
     private String url;
 
-    public Data(double mag, String place, long time, String url) {
-        this.mag = mag;
-        this.place = place;
-        this.time = time;
-        this.url = url;
+    public Data() {
     }
 
     public double getMag() {
@@ -28,5 +27,21 @@ public class Data {
 
     public String getUrl() {
         return url;
+    }
+
+    public void setMag(double mag) {
+        this.mag = mag;
+    }
+
+    public void setPlace(String place) {
+        this.place = place;
+    }
+
+    public void setTime(long time) {
+        this.time = time;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }
