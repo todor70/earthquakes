@@ -32,5 +32,10 @@ public class QuakeServiceImpl implements QuakeService {
         return quakeRepository.getAllByMagBetween(mag1, mag2);
     }
 
+    @Override
+    public void save(Quake quake) {
+        quakeRepository.save(quake);
+    }
+
 
 }
