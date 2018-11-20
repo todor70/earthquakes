@@ -26,18 +26,20 @@ public class RetrofitController {
     private String url;
 
     private QuakeService quakeService;
+    private RetrofitService retrofitService;
 
     @Autowired
-    public RetrofitController(QuakeService quakeService) {
+    public RetrofitController(QuakeService quakeService, RetrofitService retrofitService) {
         this.quakeService = quakeService;
+        this.retrofitService = retrofitService;
     }
 
     public void loadData() {
 
-        RetrofitService service = RetrofitServiceGenerator.createService(RetrofitService.class);
+        retrofitService = RetrofitServiceGenerator.createService(RetrofitService.class);
 
-        Call<DataArray> callSync = service.getDataDetails("5", "time");
-        Call<DataArray> callAsync = service.getDataDetails("5", "time");
+        Call<DataArray> callSync = retrofitService.getDataDetails("5", "time");
+        Call<DataArray> callAsync = retrofitService.getDataDetails("5", "time");
 
         callSync.enqueue(new Callback<DataArray>() {
             @Override

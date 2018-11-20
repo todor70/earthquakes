@@ -9,5 +9,4 @@ public interface RetrofitService {
 
     @GET("fdsnws/event/1/query?format=geojson&limit=100")
     Call<DataArray> getDataDetails(@Query("minmag") String minMagnitude, @Query("orderby") String orderBy);
-
 }

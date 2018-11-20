@@ -25,14 +25,14 @@ public class QuakeController {
         return "quake_list";
     }
 
-    @RequestMapping("/quakes4")
+    @RequestMapping("/quakes5")
     public String quakes4(Model model) {
         List<Quake> quakes = quakeService.getAllByMagBetween(5.0, 5.49);
         model.addAttribute("quakes", quakes);
         return "quake_list";
     }
 
-    @RequestMapping("/quakes5")
+    @RequestMapping("/quakes5.5")
     public String quakes5(Model model) {
         List<Quake> quakes = quakeService.getAllByMagBetween(5.5, 6.0);
         model.addAttribute("quakes", quakes);
