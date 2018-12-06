@@ -49,12 +49,34 @@ public class RetrofitController {
 
                 data2 = response.body().features;
 
-                for (int i = 0; i < data2.size(); i++) {
+              /*  for (int i = 0; i < data2.size(); i++) {
 
                     data.setPlace(data2.get(i).getProperties().getPlace());
                     data.setUrl(data2.get(i).getProperties().getUrl());
                     data.setMag(data2.get(i).getProperties().getMag());
                     data.setTime(data2.get(i).getProperties().getTime());
+
+                    // Create a new Date object from the time in milliseconds of the earthquake
+                    Date dateObject = new Date(data.getTime());
+
+                    // Format the date string (i.e. "Mar 3, 1984")
+                    String formattedDate = Util.formatDate(dateObject);
+
+                    // Format the time string (i.e. "4:30PM")
+                    String formattedTime = Util.formatTime(dateObject);
+
+                    Quake quake = new Quake(
+                            data.getMag(), formattedDate, formattedTime, data.getPlace(), data.getUrl());
+
+                    quakeService.save(quake);
+                }*/
+
+                for (Data2 d : data2) {
+
+                    data.setPlace(d.getProperties().getPlace());
+                    data.setUrl(d.getProperties().getUrl());
+                    data.setMag(d.getProperties().getMag());
+                    data.setTime(d.getProperties().getTime());
 
                     // Create a new Date object from the time in milliseconds of the earthquake
                     Date dateObject = new Date(data.getTime());

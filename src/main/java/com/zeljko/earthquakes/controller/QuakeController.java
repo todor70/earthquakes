@@ -20,48 +20,46 @@ public class QuakeController {
         this.quakeService = quakeService;
     }
 
-    @RequestMapping("/quakesAll")
+    private double mag1;
+    private double mag2;
+
+    @RequestMapping("/quakes")
     public String list(Model model) {
-        List<Quake> quakes = quakeService.getAllQuakes();
+        List<Quake> quakes = quakeService.getAllByMagBetween(mag1, mag2);
         List<Double> mag = new ArrayList<>();
-        mag.add(5.0);
-        mag.add(9.0);
+        mag.add(mag1);
+        mag.add(mag2);
         model.addAttribute("quakes", quakes);
         model.addAttribute("mag", mag);
         return "quake_list";
+    }
+
+    @RequestMapping("/quakesAll")
+    public String listAll() {
+        mag1 = 5.0;
+        mag2 = 9.0;
+        return "redirect:/quakes";
     }
 
     @RequestMapping("/quakes5")
-    public String quakes4(Model model) {
-        List<Quake> quakes = quakeService.getAllByMagBetween(5.0, 5.49);
-        List<Double> mag = new ArrayList<>();
-        mag.add(5.0);
-        mag.add(5.5);
-        model.addAttribute("quakes", quakes);
-        model.addAttribute("mag", mag);
-        return "quake_list";
+    public String quakes4() {
+        mag1 = 5.0;
+        mag2 = 5.5;
+        return "redirect:/quakes";
     }
 
     @RequestMapping("/quakes5.5")
-    public String quakes5(Model model) {
-        List<Quake> quakes = quakeService.getAllByMagBetween(5.5, 6.0);
-        List<Double> mag = new ArrayList<>();
-        mag.add(5.5);
-        mag.add(6.0);
-        model.addAttribute("quakes", quakes);
-        model.addAttribute("mag", mag);
-        return "quake_list";
+    public String quakes5() {
+        mag1 = 5.5;
+        mag2 = 6.0;
+        return "redirect:/quakes";
     }
 
     @RequestMapping("/quakes6")
     public String quakes6(Model model) {
-        List<Quake> quakes = quakeService.getAllByMagBetween(6.0, 9.0);
-        List<Double> mag = new ArrayList<>();
-        mag.add(6.0);
-        mag.add(9.0);
-        model.addAttribute("quakes", quakes);
-        model.addAttribute("mag", mag);
-        return "quake_list";
+        mag1 = 6.0;
+        mag2 = 9.0;
+        return "redirect:/quakes";
     }
 
 }
