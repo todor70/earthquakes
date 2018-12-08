@@ -23,7 +23,7 @@ public class QuakeController {
     private double mag1;
     private double mag2;
 
-    @RequestMapping("/quakes")
+    @GetMapping("/quakes")
     public String list(Model model) {
         List<Quake> quakes = quakeService.getAllByMagBetween(mag1, mag2);
         List<Double> mag = new ArrayList<>();
@@ -34,29 +34,29 @@ public class QuakeController {
         return "quake_list";
     }
 
-    @RequestMapping("/quakesAll")
+    @GetMapping("/quakesAll")
     public String listAll() {
         mag1 = 5.0;
         mag2 = 9.0;
         return "redirect:/quakes";
     }
 
-    @RequestMapping("/quakes5")
+    @GetMapping("/quakes5")
     public String quakes4() {
         mag1 = 5.0;
         mag2 = 5.5;
         return "redirect:/quakes";
     }
 
-    @RequestMapping("/quakes5.5")
+    @GetMapping("/quakes5.5")
     public String quakes5() {
         mag1 = 5.5;
         mag2 = 6.0;
         return "redirect:/quakes";
     }
 
-    @RequestMapping("/quakes6")
-    public String quakes6(Model model) {
+    @GetMapping("/quakes6")
+    public String quakes6() {
         mag1 = 6.0;
         mag2 = 9.0;
         return "redirect:/quakes";

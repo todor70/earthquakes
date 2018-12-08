@@ -13,4 +13,5 @@ public interface QuakeService {
     List<Quake> getAllByMagBetween(double mag1, double mag2);
 
     void save (Quake quake);
+
 }

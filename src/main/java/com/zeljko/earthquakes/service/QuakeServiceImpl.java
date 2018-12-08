@@ -37,5 +37,4 @@ public class QuakeServiceImpl implements QuakeService {
         quakeRepository.save(quake);
     }
 
-
 }
