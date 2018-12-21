@@ -1,5 +1,5 @@
 # earthquakes
-Spring Boot with Retrofit 2, H2 database and Thymeleaf
+Spring Boot with Retrofit 2, PostgreSQL database and Thymeleaf
 
 ![](images/home_1.png)
 
@@ -15,4 +15,4 @@ Spring Boot with Retrofit 2, H2 database and Thymeleaf
 
 ![](images/usgs.png)
 
-![](images/h2.png)
+![](images/postgresql.png)
