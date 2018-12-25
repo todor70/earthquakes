@@ -11,6 +11,8 @@ Spring Boot with Retrofit 2, PostgreSQL database and Thymeleaf
 
 ![](images/list_2.png)
 
+![](images/list_3.png)
+
 ![](images/usgs_quakes.png)
 
 ![](images/usgs.png)
