@@ -32,5 +32,6 @@ $(document).ready(function(){
         else{
             $(".navbar").removeClass("bg-secondary");
         }
-    })
-})
+    });
+});
+
