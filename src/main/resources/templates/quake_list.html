@@ -11,8 +11,22 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <link rel="stylesheet" th:href="@{/css/quake.css}"/>
     <script th:src ="@{/js/quake.js}"></script>
-    <script th:src ="@{/js/search.js}"></script>
 
+    <!--search by place-->
+   <!-- <script th:src ="@{/js/search.js}"></script>-->
+
+
+    <!--search all-->
+    <script>
+        $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myTable21 tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
 </head>
 <body>
 
@@ -38,7 +52,7 @@
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search by place" aria-label="Search">
+            <input class="form-control mr-sm-2" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search" aria-label="Search">
         </form>
     </div>
 </nav>
