@@ -65,19 +65,23 @@
 <section class="module parallax2 parallax-1" data-type="background" data-speed="10">
     <div class="parallax-container">
         <div style="padding:0 20px">
-            <table id="myTable21" style="font-family: 'sans-serif'" class="table table-striped table-dark">
+            <table style="font-family: 'sans-serif'" class="table table-striped table-dark">
+                <thead>
                 <tr>
                     <th>Magnitude</th>
                     <th>Time</th>
                     <th>Place</th>
                     <th>Action</th>
                 </tr>
+                </thead>
+                <tbody id="myTable21">
                 <tr th:each="quake : ${quakes}">
                     <td th:text="${quake.mag}" style="color: red; font-size: medium; font-weight: bold"></td>
                     <td th:text="${quake.date} + '  ' + ${quake.time}"></td>
                     <td th:text="${quake.place}"></td>
                     <td><a th:href="${quake.url}" class="btn btn-light btn-sm">Read more</a></td>
                 </tr>
+                </tbody>
             </table>
         </div>
     </div>
