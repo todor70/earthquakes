@@ -79,7 +79,7 @@
                     <td th:text="${quake.mag}" style="color: red; font-size: medium; font-weight: bold"></td>
                     <td th:text="${quake.date} + '  ' + ${quake.time}"></td>
                     <td th:text="${quake.place}"></td>
-                    <td><a th:href="${quake.url}" class="btn btn-light btn-sm">Read more</a></td>
+                    <td><a th:href="${quake.url}" target="_blank" class="btn btn-light btn-sm">Read more</a></td>
                 </tr>
                 </tbody>
             </table>
